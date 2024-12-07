@@ -5,10 +5,11 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.embedded.EmbeddedChannel;
 import io.netty.handler.codec.TooLongFrameException;
 import nia.chapter9.FrameChunkDecoder;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Listing 9.6 Testing FrameChunkDecoder
@@ -31,7 +32,7 @@ public class FrameChunkDecoderTest {
         assertTrue(channel.writeInbound(input.readBytes(2)));
         try {
             channel.writeInbound(input.readBytes(4));
-            Assert.fail();
+            Assertions.fail();
         } catch (TooLongFrameException e) {
             // expected exception
         }
